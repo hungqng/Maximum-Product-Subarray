@@ -37,3 +37,10 @@ class Solution:
             cur_min = min(tmp * n, cur_min * n, n)
             _max = max(_max, cur_max)
         return _max
+
+        # Solution 3
+        reverse = nums[::-1]
+        for i in range(1, len(nums)):
+            nums[i] *= nums[i - 1] or 1
+            reverse[i] *= reverse[i - 1] or 1
+        return max(nums + reverse)
